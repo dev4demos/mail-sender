@@ -7,7 +7,7 @@
 - Начальная загрузка, контракты API и абстракции        4 часа.
 - Моделирование приложения, базы данных и кодирования   3 часа.
 - Тестирование отладки и публикации пакета              3 часа.
-- Упаковка и развертывание Git                          2 час.
+- Упаковка и развертывание Git                          2 часа.
 - Документирование и руководство по установке           5 часов.
 - Общее время проекта                                   17 часов.
 
@@ -59,9 +59,9 @@
 - Bootstrapping, API contracts and abstractions     4 hrs.
 - Modelling the APP, database and coding            3 hrs.
 - Testing debug and publishing package              3 hrs.
-- Git packaging and deployment                      1 hrs.
+- Git packaging and deployment                      2 hrs.
 - Documenting and Installation guide                5 hrs.
-- Total project time                                16 hrs.
+- Total project time                                17 hrs.
 
 # Installation
 This package utilizes Composer to manage its dependencies. Make sure you have Composer installed on your machine.
