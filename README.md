@@ -18,15 +18,15 @@
 - composer create-project --prefer-dist laravel / laravel task "6.2. *"
 2) Измените каталог на только что созданный проект. В Windows команда:
 - cd task
-2) После завершения установки laravel выполните следующую команду, чтобы установить этот пакет
-- композитору требуется drnkwati / mail-sender
-3) измените конфигурацию базы данных для вашего приложения в файле конфигурации .env
+3) После завершения установки laravel выполните следующую команду, чтобы установить этот пакет
+- composer require drnkwati/mail-sender-laravel
+4) измените конфигурацию базы данных для вашего приложения в файле конфигурации .env
 - Вы можете использовать любую реляционную базу данных, поддерживаемую фреймворком laravel. Просто установите соединение с базой данных и запустите миграции.
 - Для вашего удобства этот пакет поставляется с демонстрационной базой данных sqlite с исходными данными. Вы можете найти его в папке src.
 - Чтобы использовать эту демонстрационную базу данных, просто скопируйте ее в папку своей базы данных как database.sqlite
-4) Вы можете использовать веб-сервер, такой как Apache или Nginx, для обслуживания своих приложений. Использовать встроенный сервер разработки PHP. В Windows выполните следующую команду:
+5) Вы можете использовать веб-сервер, такой как Apache или Nginx, для обслуживания своих приложений. Использовать встроенный сервер разработки PHP. В Windows выполните следующую команду:
 - php artisan serve --port = 7070
-5) Откройте свой веб-браузер по адресу: http://127.0.0.1:7070/mail.
+6) Откройте свой веб-браузер по адресу: http://127.0.0.1:7070/mail.
 
 # Возможные конечные точки API включают:
 - http://127.0.0.1:7070/mail
@@ -69,15 +69,15 @@ Then run the following commands in your terminal:
 - composer create-project --prefer-dist laravel/laravel task "6.2.*"
 2) Change your directory to the newly created project. On windows the command is: 
 - cd task
-2) After laravel installation is complete, run the following command to install this package
-- composer require drnkwati/mail-sender
-3) change database configuration for your application in .env configuration file
+3) After laravel installation is complete, run the following command to install this package
+- composer require drnkwati/mail-sender-laravel
+4) change database configuration for your application in .env configuration file
 - You may use any relational database supported by laravel framework. Just set the database connection and run migrations.
 - For your convenience, this package comes with a demo sqlite database with seed data. You can find it in src folder.
 - To use this demo database, just copy it to your database folder as database.sqlite
-4) You may use a web server such as Apache or Nginx to serve your applications. To use PHP's built-in development server. On windows run the following command: 
+5) You may use a web server such as Apache or Nginx to serve your applications. To use PHP's built-in development server. On windows run the following command: 
 - php artisan serve --port=7070
-5) Open your web browser at: http://127.0.0.1:7070/mail
+6) Open your web browser at: http://127.0.0.1:7070/mail
 
 # Possible API endpoints include:
 - http://127.0.0.1:7070/mail
