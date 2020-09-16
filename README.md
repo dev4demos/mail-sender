@@ -26,7 +26,8 @@
 - Чтобы использовать эту демонстрационную базу данных, просто скопируйте ее в папку своей базы данных как database.sqlite
 5) Вы можете использовать веб-сервер, такой как Apache или Nginx, для обслуживания своих приложений. Использовать встроенный сервер разработки PHP. В Windows выполните следующую команду:
 - php artisan serve --port = 7070
-6) Откройте свой веб-браузер по адресу: http://127.0.0.1:7070/mail.
+6) В файле .env обновите конфигурацию почтового драйвера, чтобы он регистрировался во время тестирования. MAIL_DRIVER =log
+7) Откройте свой веб-браузер по адресу: http://127.0.0.1:7070/mail.
 
 # Возможные конечные точки API включают:
 - http://127.0.0.1:7070/mail
@@ -77,7 +78,8 @@ Then run the following commands in your terminal:
 - To use this demo database, just copy it to your database folder as database.sqlite
 5) You may use a web server such as Apache or Nginx to serve your applications. To use PHP's built-in development server. On windows run the following command: 
 - php artisan serve --port=7070
-6) Open your web browser at: http://127.0.0.1:7070/mail
+6) In the .env file, update your mail driver config to log during testing. MAIL_DRIVER=log
+7) Open your web browser at: http://127.0.0.1:7070/mail
 
 # Possible API endpoints include:
 - http://127.0.0.1:7070/mail
