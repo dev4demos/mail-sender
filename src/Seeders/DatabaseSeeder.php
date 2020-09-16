@@ -20,13 +20,20 @@ class DatabaseSeeder extends Seeder
     {
         $faker = Factory::create('en');
 
+        $admin = Config::get('mail.from.address') ?: $faker->unique()->safeEmail;
+
         // $items = [
-        //     'Welcome test message' => 'bobby@yahoo.com',
+        //     'Welcome' => 'bobby@yahoo.com',
         //     'How to invite friends' => 'emma@hotmail.com',
         //     'Investigating services' => 'winky@gmail.com'
         // ];
 
-        $admin = Config::get('mail.from.address') ?: $faker->unique()->safeEmail;
+        // foreach ($items as $content => $sender) {
+        //     MailMessage::create($content)
+        //         ->setFrom($sender)
+        //         ->setTo($admin, Config::get('mail.from.name'))
+        //         ->store();
+        // }
 
         foreach (range(1, 10) as $content => $sender) {
             MailMessage::create($faker->text(100))

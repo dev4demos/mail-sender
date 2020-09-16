@@ -4,8 +4,6 @@ declare (strict_types = 1);
 
 namespace Mail\Sender\Controllers;
 
-// use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-// use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -15,14 +13,12 @@ use Mail\Sender\Mailables\MessageMailable;
 
 class SenderController extends Controller
 {
-    // use AuthorizesRequests;
-    // use DispatchesJobs;
     use ValidatesRequests;
 
     /**
-     * Display a listing of the resource.
+     * Display a form for sending mails.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -30,7 +26,7 @@ class SenderController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Send and store a newly created mail in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
@@ -52,6 +48,7 @@ class SenderController extends Controller
             try {
                 // I used the log driver by default during testing
                 Mail::send($mailable);
+
                 // save to database on success
                 $saved = $mailable->message()->setAttributes(['sent' => 1])->store() ? true : false;
 
@@ -59,20 +56,37 @@ class SenderController extends Controller
                     $data = array_merge($data, (array) $stored);
                 }
 
-                $data['status'] = $saved ? 'Success' : 'Error';
+                $data['status'] = $saved ? 'created' : 'error';
 
             } catch (\Exception $e) {
                 // write some logs
-                $data['status'] = 'Error';
+                $data['status'] = 'error';
             }
-        } else {
-            $data = $data = array_merge(
-                $mailable->message()->getStored(),
-                ['status' => 'Message was already sent']
+        } elseif ($mailable->message()->wasSent()) {
+            $data = array_merge(
+                $mailable->message()->getStored(), ['status' => 'found']
             );
+        } elseif ($mailable->message()->exists()) {
+            // maybe exists but not sent try resending
         }
 
-        return response()->json($data);
+        $response = response()->json($data);
+
+        switch (true) {
+            case $data['status'] = 'created':
+                $response->setStatusCode(201);
+                break;
+
+            case $data['status'] = 'found':
+                $response->setStatusCode(302);
+                break;
+
+            case $data['status'] = 'error':
+                $response->setStatusCode(406);
+                break;
+        }
+
+        return $response;
     }
 
     /**
@@ -90,9 +104,7 @@ class SenderController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @return array
      */
     public function getValidationRules()
     {
