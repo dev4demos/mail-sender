@@ -1,0 +1,38 @@
+{
+    "name": "drnkwati/mail-sender-laravel",
+    "description": "Laravel API mail sender package",
+    "license": "MIT",
+    "type": "library",
+    "require":
+    {
+        "php": ">=7.0",
+        "doctrine/dbal": ">=2.5",
+        "laravel/framework": ">=5.5"
+    },
+    "authors": [
+    {
+        "name": "Divine Nkwati ",
+        "email": "drnkwati@gmail.com"
+    }],
+    "autoload":
+    {
+        "psr-4":
+        {
+            "Mail\\Sender\\": "src/"
+        }
+    },
+    "extra":
+    {
+        "laravel":
+        {
+            "providers": [
+                "Mail\\Sender\\SenderServiceProvider"
+            ]
+        },
+        "branch-alias":
+        {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}
